@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { prisma } from "../../../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 
 export async function POST() {
   try {
@@ -16,7 +16,7 @@ export async function POST() {
     if (!email) {
       return NextResponse.json(
         { error: "User does not have an email address" },
-        { status: 404 }
+        { status: 400 }
       );
     }
 

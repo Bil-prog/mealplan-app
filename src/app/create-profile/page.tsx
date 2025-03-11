@@ -36,5 +36,5 @@ export default function CreateProfile() {
             mutate();
         }
     }, [isLoaded, isSignedIn])
-    return <div>Processing sign in...</div>
+    return <div className="flex items-center justify-center text-center">Processing sign in...</div>
 }
