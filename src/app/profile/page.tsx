@@ -2,7 +2,7 @@
 
 import { Spinner } from "@/components/spinner";
 import { availablePlans } from "@/lib/plans";
-import { useUser } from "@clerk/nextjs";
+import { useUser, SignOutButton } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -126,11 +126,11 @@ export default function Profile() {
     );
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-emerald-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-indigo-100 p-4">
       <Toaster position="top-center" />{" "}
       <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 p-6 bg-emerald-500 text-white flex flex-col items-center">
+          <div className="w-full md:w-1/3 p-6 bg-indigo-500 text-white flex flex-col items-center">
             <Image
               src={user.imageUrl || "/placeholder.png"}
               alt="User Avatar"
@@ -142,10 +142,13 @@ export default function Profile() {
               {user.firstName} {user.lastName}
             </h1>
             <p className="mb-4">{user.primaryEmailAddress?.emailAddress}</p>
+            <SignOutButton>
+              <button className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors cursor-pointer">Sign Out</button>
+            </SignOutButton>
           </div>
 
           <div className="w-full md:w-2/3 p-6 bg-gray-50">
-            <h2 className="text-2xl font-bold mb-6 text-emerald-700">
+            <h2 className="text-2xl font-bold mb-6 text-indigo-700">
               Subscription Details
             </h2>
 
@@ -158,8 +161,8 @@ export default function Profile() {
               <p className="text-red-500">{error?.message}</p>
             ) : subscription ? (
               <div className="space-y-6">
-                <div className="bg-white shadow-md rounded-lg p-4 border border-emerald-200">
-                  <h3 className="text-xl font-semibold mb-2 text-emerald-600">
+                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
                     Current Plan
                   </h3>
                   {currentPlan ? (
@@ -180,14 +183,14 @@ export default function Profile() {
                   )}
                 </div>
 
-                <div className="bg-white shadow-md rounded-lg p-4 border border-emerald-200">
-                  <h3 className="text-xl font-semibold mb-2 text-emerald-600">
+                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
                     Change Subscription Plan
                   </h3>
                   <select
                     onChange={handleChangePlan}
                     defaultValue={currentPlan?.interval}
-                    className="w-full px-3 py-2 border border-emerald-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 border border-indigo-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
                     disabled={changePlanMutation.isPending}
                   >
                     <option value="" disabled>
@@ -201,7 +204,7 @@ export default function Profile() {
                   </select>
                   <button
                     onClick={handleConfirmChangePlan}
-                    className="mt-3 p-2 bg-emerald-500 rounded-lg text-white px-3 cursor-pointer"
+                    className="mt-3 p-2 bg-indigo-500 rounded-lg text-white px-3 cursor-pointer"
                   >
                     Save Change
                   </button>
@@ -213,8 +216,8 @@ export default function Profile() {
                   )}
                 </div>
 
-                <div className="bg-white shadow-md rounded-lg p-4 border border-emerald-200">
-                  <h3 className="text-xl font-semibold mb-2 text-emerald-600">
+                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
                     Unsubscribe
                   </h3>
                   <button

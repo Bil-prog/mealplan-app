@@ -95,7 +95,7 @@ export default function Subscribe() {
           >
             <div className="flex-1">
               {plan.isPopular && (
-                <p className="absolute top-0 py-1.5 px-4 bg-emerald-500 text-white rounded-full text-xs font-semibold uppercase tracking-wide transform -translate-y-1/2">
+                <p className="absolute top-0 py-1.5 px-4 bg-indigo-500 text-white rounded-full text-xs font-semibold uppercase tracking-wide transform -translate-y-1/2">
                   Most popular
                 </p>
               )}
@@ -122,7 +122,7 @@ export default function Subscribe() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="flex-shrink-0 w-6 h-6 text-emerald-500"
+                      className="flex-shrink-0 w-6 h-6 text-indigo-500"
                     >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
@@ -135,8 +135,8 @@ export default function Subscribe() {
             <button
               className={`${
                 plan.interval === "month"
-                  ? "bg-emerald-500 text-white  hover:bg-emerald-600 "
-                  : "bg-emerald-100 text-emerald-700  hover:bg-emerald-200 "
+                  ? "bg-indigo-500 text-white  hover:bg-indigo-600 "
+                  : "bg-indigo-100 text-indigo-700  hover:bg-indigo-200 "
               }  mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium disabled:bg-gray-400 disabled:cursor-not-allowed cursor-pointer`}
               onClick={() => handleSubscribe(plan.interval)}
               disabled={isPending}
