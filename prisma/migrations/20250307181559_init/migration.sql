@@ -3,9 +3,9 @@ CREATE TABLE "Profile" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "subscriptionActive" BOOLEAN NOT NULL DEFAULT false,
-    "subscriptionTier" TEXT,
-    "stripeSubscriptionId" TEXT,
+    -- "subscriptionActive" BOOLEAN NOT NULL DEFAULT false,
+    -- "subscriptionTier" TEXT,
+    -- "stripeSubscriptionId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

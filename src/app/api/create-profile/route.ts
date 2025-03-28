@@ -31,9 +31,9 @@ export async function POST() {
       data: {
         userId: clerkUser.id,
         email,
-        subscriptionTier: null,
-        stripeSubscriptionId: null,
-        subscriptionActive: false,
+        // subscriptionTier: null,
+        // stripeSubscriptionId: null,
+        // subscriptionActive: false,
       },
     });
     return NextResponse.json(

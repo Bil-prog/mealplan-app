@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { UserPlus, Settings, ClipboardList } from "lucide-react";
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const steps = [
@@ -31,24 +32,35 @@ export default function HomePage() {
     },
   ];
   return (
-    <div className="px-4 py-8 sm:py-12 lg:py-16 max-w-7xl mx-auto">
+    <div>
+    <div className="px-4 py-8 sm:py-12 lg:py-16 mx-auto">
       <motion.section
-        className="bg-gradient-to-r from-indigo-400 to-indigo-600 text-white rounded-lg mb-12 p-8 text-center"
+        className="relative text-white rounded-lg mb-12 p-8 text-center h-[400px] flex flex-col items-center justify-center"
+        style={{
+          backgroundImage: "url('/mealplan-hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-4">Personalized AI Meal Plans</h1>
-        <p className="text-xl mb-6">
-          Let our AI do the planning. You focus on cooking and enjoying!
-        </p>
-        <Link
-          href="/sign-up"
-          className="inline-block bg-white text-indigo-500 font-medium px-5 py-3 rounded hover:bg-gray-100 transition-colors"
-        >
-          Get Started
-        </Link>
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-indigo-600 opacity-75 rounded-lg"></div>
+        <div className="relative z-10">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            Personalized AI Meal Plans
+          </h1>
+          <p className="text-lg md:text-xl mb-6">
+            Let our AI do the planning. You focus on cooking and enjoying!
+          </p>
+          <Link
+            href="/sign-up"
+            className="inline-block bg-white text-indigo-500 font-medium px-5 py-3 rounded hover:bg-indigo-600 hover:text-white transition-colors"
+          >
+            Get Started
+          </Link>
+        </div>
       </motion.section>
 
       <section className="py-16 px-4">
@@ -106,6 +118,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+    </div>
+    <Footer />
     </div>
   );
 }

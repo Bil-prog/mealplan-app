@@ -94,7 +94,7 @@ export default function MealPlanDashboard() {
               >
                 Diet Type
               </label>
-              <input
+              {/* <input
                 type="text"
                 id="dietType"
                 value={dietType}
@@ -102,7 +102,22 @@ export default function MealPlanDashboard() {
                 required
                 className="w-full px-3 py-2 border border-indigo-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
                 placeholder="e.g., Vegetarian, Keto, Mediterranean"
-              />
+              /> */}
+              <select 
+                id="dietType"
+                value={dietType}
+                onChange={(e) => setDietType(e.target.value)}
+                required
+                className="w-full px-3 py-2 border border-indigo-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              >
+                <option value="" disabled>Select a diet type</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Keto">Keto</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Paleo">Paleo</option>
+                <option value="Paleo">None</option>
+              </select>
             </div>
 
             <div>
@@ -149,14 +164,20 @@ export default function MealPlanDashboard() {
               >
                 Preferred Cuisine
               </label>
-              <input
-                type="text"
+              <select 
                 id="cuisine"
                 value={cuisine}
                 onChange={(e) => setCuisine(e.target.value)}
                 className="w-full px-3 py-2 border border-indigo-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                placeholder="e.g., Italian, Chinese, No Preference"
-              />
+              >
+                <option value="" disabled>Select a cuisine</option>
+                <option value="Italian">Italian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Indian">Indian</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Japanese">Japanese</option>
+                <option value="No Preference">No Preference</option>
+              </select>
             </div>
 
             <div className="flex items-center">

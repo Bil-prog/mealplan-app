@@ -127,120 +127,23 @@ export default function Profile() {
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-indigo-100 p-4">
-      <Toaster position="top-center" />{" "}
-      <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 p-6 bg-indigo-500 text-white flex flex-col items-center">
-            <Image
-              src={user.imageUrl || "/placeholder.png"}
-              alt="User Avatar"
-              width={100}
-              height={100}
-              className="rounded-full mb-4"
-            />
-            <h1 className="text-2xl font-bold mb-2">
-              {user.firstName} {user.lastName}
-            </h1>
-            <p className="mb-4">{user.primaryEmailAddress?.emailAddress}</p>
-            <SignOutButton>
-              <button className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors cursor-pointer">Sign Out</button>
-            </SignOutButton>
-          </div>
-
-          <div className="w-full md:w-2/3 p-6 bg-gray-50">
-            <h2 className="text-2xl font-bold mb-6 text-indigo-700">
-              Subscription Details
-            </h2>
-
-            {isLoading ? (
-              <div className="flex items-center">
-                <Spinner />
-                <span className="ml-2">Loading subscription details...</span>
-              </div>
-            ) : isError ? (
-              <p className="text-red-500">{error?.message}</p>
-            ) : subscription ? (
-              <div className="space-y-6">
-                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
-                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
-                    Current Plan
-                  </h3>
-                  {currentPlan ? (
-                    <>
-                      <p>
-                        <strong>Plan:</strong> {currentPlan.name}
-                      </p>
-                      <p>
-                        <strong>Amount:</strong> ${currentPlan.amount}{" "}
-                        {currentPlan.currency}
-                      </p>
-                      <p>
-                        <strong>Status:</strong>{" "} ACTIVE
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-red-500">Current plan not found.</p>
-                  )}
-                </div>
-
-                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
-                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
-                    Change Subscription Plan
-                  </h3>
-                  <select
-                    onChange={handleChangePlan}
-                    defaultValue={currentPlan?.interval}
-                    className="w-full px-3 py-2 border border-indigo-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                    disabled={changePlanMutation.isPending}
-                  >
-                    <option value="" disabled>
-                      Select a new plan
-                    </option>
-                    {availablePlans.map((plan, key) => (
-                      <option key={key} value={plan.interval}>
-                        {plan.name} - ${plan.amount} / {plan.interval}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    onClick={handleConfirmChangePlan}
-                    className="mt-3 p-2 bg-indigo-500 rounded-lg text-white px-3 cursor-pointer"
-                  >
-                    Save Change
-                  </button>
-                  {changePlanMutation.isPending && (
-                    <div className="flex items-center mt-2">
-                      <Spinner />
-                      <span className="ml-2">Updating plan...</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="bg-white shadow-md rounded-lg p-4 border border-indigo-200">
-                  <h3 className="text-lg md:text-xl font-semibold mb-2 text-indigo-600">
-                    Unsubscribe
-                  </h3>
-                  <button
-                    onClick={handleUnsubscribe}
-                    disabled={unsubscribeMutation.isPending}
-                    className={`w-full md:w-1/2 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors cursor-pointer ${
-                      unsubscribeMutation.isPending
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
-                    }`}
-                  >
-                    {unsubscribeMutation.isPending
-                      ? "Unsubscribing..."
-                      : "Unsubscribe"}
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <p>You are not subscribed to any plan.</p>
-            )}
-          </div>
-        </div>
-      </div>
+      <Toaster position="top-center" /> 
+      <div className="w-full md:w-1/3 p-6 bg-indigo-500 text-white flex flex-col items-center">
+        <Image
+          src={user.imageUrl || "/placeholder.png"}
+          alt="User Avatar"
+          width={100}
+          height={100}
+          className="rounded-full mb-4"
+        />
+        <h1 className="text-2xl font-bold mb-2">
+          {user.firstName} {user.lastName}
+        </h1>
+        <p className="mb-4">{user.primaryEmailAddress?.emailAddress}</p>
+        <SignOutButton>
+          <button className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors cursor-pointer">Sign Out</button>
+        </SignOutButton>
+      </div>       
     </div>
   );
 }

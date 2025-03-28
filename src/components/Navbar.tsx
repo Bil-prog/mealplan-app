@@ -32,7 +32,7 @@ export default function Navbar() {
             )}
           </SignedIn>
           <SignedOut>
-            <Link href={isSignedIn ? "/subscribe" : "/sign-up"} className="text-indigo-500 transition-colors border border-indigo-500 px-4 py-2 cursor-pointer rounded-md">Subscribe</Link>
+            <Link href={isSignedIn ? "/mealplan" : "/sign-up"} className="border-2 border-indigo-500 text-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-500 hover:text-white transition-colors">Meal Plan</Link>
             <Link href="/sign-up" className="ml-4 px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition-colors cursor-pointer">Sign Up</Link>
           </SignedOut>
         </div>
