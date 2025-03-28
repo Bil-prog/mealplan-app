@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import ReactQueryClientProvider from "@/components/react-query-client-provider";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
             <div className="mx-auto pt-20 min-h-screen">
               {children}
             </div>
+            <Footer />
           </body>
         </html>
       </ReactQueryClientProvider>

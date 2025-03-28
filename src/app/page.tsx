@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { UserPlus, Settings, ClipboardList } from "lucide-react";
 import { motion } from "framer-motion";
-import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const steps = [
@@ -119,7 +118,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-    <Footer />
     </div>
   );
 }
