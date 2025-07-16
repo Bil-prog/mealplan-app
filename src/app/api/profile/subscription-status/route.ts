@@ -11,13 +11,15 @@ export async function GET() {
 
         const profile = await prisma.profile.findUnique({
             where: {userId: clerkUser.id},
-            select: {subscriptionTier: true}
+            //select: {subscriptionTier: true}
         })
         if(!profile) {
             return NextResponse.json({error: "No profile found"})
         }
         return NextResponse.json({subscription: profile})
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+        console.error(error)
         return NextResponse.json({error: "Internal Error"}, {status: 500})
     }
 }

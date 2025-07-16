@@ -7,7 +7,7 @@ import { useUser, SignOutButton } from "@clerk/nextjs";
 import Image from "next/image";
 // import { useRouter } from "next/navigation";
 // import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 // async function fetchSubscriptionStatus() {
 //   const response = await fetch("/api/profile/subscription-status");

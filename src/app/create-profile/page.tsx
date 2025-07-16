@@ -35,6 +35,6 @@ export default function CreateProfile() {
         if(isLoaded && isSignedIn && !isPending) {
             mutate();
         }
-    }, [isLoaded, isSignedIn])
+    }, [isLoaded, isSignedIn, isPending, mutate])
     return <div className="flex items-center justify-center text-center mt-16">Processing sign in...</div>
 }

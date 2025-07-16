@@ -40,7 +40,9 @@ export async function POST() {
       { message: "Profile created successfully" },
       { status: 201 }
     );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
+    console.error(error);
     return NextResponse.json({ error: "internal error" }, { status: 500 });
   }
 }

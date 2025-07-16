@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe";
+//import { prisma } from "@/lib/prisma";
+//import { stripe } from "@/lib/stripe";
 import { currentUser } from "@clerk/nextjs/server";
-import { getPriceIDFromType } from "@/lib/plans";
+//import { getPriceIDFromType } from "@/lib/plans";
 
 export async function POST(request: Request) {
   try {
@@ -19,45 +19,46 @@ export async function POST(request: Request) {
       );
     }
 
-    const profile = await prisma.profile.findUnique({
-      where: { userId: clerkUser.id },
-    });
-    if (!profile?.stripeSubscriptionId) {
-      throw new Error("No active subscription found.");
-    }
+    // const profile = await prisma.profile.findUnique({
+    //   where: { userId: clerkUser.id },
+    // });
+    // if (!profile?.stripeSubscriptionId) {
+    //   throw new Error("No active subscription found.");
+    // }
 
-    const subscriptionId = profile.stripeSubscriptionId;
+    // const subscriptionId = profile.stripeSubscriptionId;
 
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-    const subscriptionItemId = subscription.items.data[0]?.id;
-    if (!subscriptionItemId) {
-      throw new Error("Subscription item not found.");
-    }
+    //const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    //const subscriptionItemId = subscription.items.data[0]?.id;
+    // if (!subscriptionItemId) {
+    //   throw new Error("Subscription item not found.");
+    // }
 
-    const updatedSubscription = await stripe.subscriptions.update(
-      subscriptionId,
-      {
-        cancel_at_period_end: false,
-        items: [
-          {
-            id: subscriptionItemId,
-            price: getPriceIDFromType(newPlan),
-          },
-        ],
-        proration_behavior: "create_prorations",
-      }
-    );
+    // const updatedSubscription = await stripe.subscriptions.update(
+    //   subscriptionId,
+    //   {
+    //     cancel_at_period_end: false,
+    //     items: [
+    //       {
+    //         id: subscriptionItemId,
+    //         price: getPriceIDFromType(newPlan),
+    //       },
+    //     ],
+    //     proration_behavior: "create_prorations",
+    //   }
+    // );
 
-    await prisma.profile.update({
-      where: { userId: clerkUser.id },
-      data: {
-        subscriptionTier: newPlan,
-        stripeSubscriptionId: updatedSubscription.id,
-        subscriptionActive: true,
-      },
-    });
+    // await prisma.profile.update({
+    //   where: { userId: clerkUser.id },
+    //   data: {
+    //     subscriptionTier: newPlan,
+    //     stripeSubscriptionId: updatedSubscription.id,
+    //     subscriptionActive: true,
+    //   },
+    // });
 
-    return NextResponse.json({ subscription: updatedSubscription });
+    // return NextResponse.json({ subscription: updatedSubscription });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error("Error changing subscription plan:", error);
     return NextResponse.json(
